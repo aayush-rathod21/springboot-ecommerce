@@ -14,5 +14,12 @@ public class HomeController {
     @GetMapping("/about")
     public String about(){
         return "This is project 2 with external database";
+            }
+    @GetMapping("/name")
+    public String name(){
+        return "Aayush";
     }
+    
+    
+    
 }

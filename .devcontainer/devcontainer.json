@@ -1,5 +1,0 @@
-{
-  "name": "Spring Boot E-commerce",
-
-  "postStartCommand": "sudo service mysql start && sdk use java 21.0.11-tem && echo 'Environment Ready!'"
-}

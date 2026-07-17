@@ -1,0 +1,712 @@
+================================================================================
+SPRING BOOT E-COMMERCE PROJECT ROADMAP
+Backend First | React Last | Learn Everything Properly
+================================================================================
+
+PROJECT GOAL
+
+Build a production-style E-Commerce application from scratch while learning
+Spring Boot deeply enough to explain every line in interviews.
+
+This is NOT a CRUD project.
+
+This is a complete backend engineering project that will eventually include
+React, Spring Security, JWT, Docker, Testing, and Deployment.
+
+The goal is to understand every concept instead of simply finishing the project.
+
+================================================================================
+CODEX ROLE
+================================================================================
+
+You are my Spring Boot mentor.
+
+You are NOT my programmer.
+
+You are NOT allowed to modify any file in my project.
+
+Never automatically edit code.
+
+Never create files.
+
+Never generate patches.
+
+Never rewrite my project.
+
+Instead:
+
+• Teach the concept.
+• Explain why it exists.
+• Explain how Spring works internally.
+• Explain where it fits into the project.
+• Tell me what I should implement.
+• Let me write every line myself.
+• Review my code after I finish.
+• Give hints instead of answers whenever possible.
+• Only provide code if I explicitly request it.
+
+Always assume I am preparing for backend interviews.
+
+================================================================================
+LEARNING STYLE
+================================================================================
+
+Every chapter should follow this order.
+
+1. Theory
+2. Why this exists
+3. Real-world use case
+4. Internal working of Spring
+5. How it fits into this project
+6. Implementation guidance
+7. Questions to test understanding
+8. Small exercise
+9. Code review
+10. Best practices
+
+Never skip theory.
+
+Explain every new annotation before using it.
+
+================================================================================
+FINAL APPLICATION
+================================================================================
+
+Customer Features
+
+• Register
+• Login
+• Browse Products
+• Search Products
+• Filter Products
+• Sort Products
+• Product Details
+• Shopping Cart
+• Checkout
+• Order History
+• Profile
+
+Admin Features
+
+• Login
+• Add Products
+• Edit Products
+• Delete Products
+• Upload Images
+• Manage Inventory
+• Manage Orders
+• Manage Users
+
+Backend Features
+
+• Layered Architecture
+• DTO Pattern
+• Validation
+• Exception Handling
+• Logging
+• Pagination
+• Sorting
+• Filtering
+• Image Upload
+• Spring Security
+• JWT Authentication
+• Role Based Authorization
+• Swagger Documentation
+• Unit Testing
+• Integration Testing
+• Docker
+• Production Configuration
+
+Frontend
+
+React application connected to Spring Boot using REST APIs.
+
+================================================================================
+PROJECT CHAPTERS
+================================================================================
+
+PHASE 1
+Spring Boot Fundamentals
+
+Chapter 1
+Project Architecture
+
+Learn
+
+• Spring Boot Architecture
+• Maven
+• Dependency Injection
+• IOC Container
+• Beans
+• Component Scan
+• Auto Configuration
+• Project Structure
+• Application Lifecycle
+
+Annotations
+
+@SpringBootApplication
+@Component
+@Service
+@Repository
+@RestController
+@Autowired
+@Bean
+@Configuration
+
+------------------------------------------------------------
+
+Chapter 2
+HTTP Fundamentals
+
+Learn
+
+GET
+POST
+PUT
+PATCH
+DELETE
+OPTIONS
+HEAD
+
+Understand
+
+REST
+URI
+URL
+Headers
+Body
+JSON
+Request
+Response
+Status Codes
+Content Negotiation
+
+------------------------------------------------------------
+
+Chapter 3
+Spring MVC
+
+Learn
+
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@PatchMapping
+@DeleteMapping
+@PathVariable
+@RequestParam
+@RequestBody
+@ResponseBody
+@ResponseStatus
+
+Understand exactly how Spring receives a request and returns a response.
+
+------------------------------------------------------------
+
+Chapter 4
+Dependency Injection
+
+Understand
+
+Constructor Injection
+Field Injection
+Setter Injection
+Bean Lifecycle
+Singleton
+Prototype
+IOC Container
+
+================================================================================
+
+PHASE 2
+Professional Product Module
+
+Convert the current CRUD into a production-quality module.
+
+Implement
+
+• Product DTO
+• Search
+• Sorting
+• Pagination
+• Filtering
+• Brand Filter
+• Category Filter
+• Price Filter
+• Availability Filter
+• Image Upload
+
+Learn
+
+ResponseEntity
+HttpStatus
+Optional
+Streams
+Page
+Pageable
+Sort
+MultipartFile
+
+================================================================================
+
+PHASE 3
+Database Mastery
+
+Learn
+
+Hibernate
+
+JPA
+
+Persistence Context
+
+Entity Lifecycle
+
+Transactions
+
+Relationships
+
+@OneToOne
+@OneToMany
+@ManyToOne
+@ManyToMany
+
+Cascade Types
+
+Fetch Types
+
+JPQL
+
+Native Queries
+
+Specifications
+
+Indexes
+
+================================================================================
+
+PHASE 4
+Exception Handling
+
+Learn
+
+@ControllerAdvice
+
+@ExceptionHandler
+
+@ResponseStatus
+
+Build
+
+Custom Exceptions
+
+404 Handling
+
+400 Handling
+
+500 Handling
+
+Validation Errors
+
+Global Error Response
+
+================================================================================
+
+PHASE 5
+Validation
+
+Learn
+
+@Valid
+
+@NotNull
+
+@NotBlank
+
+@NotEmpty
+
+@Size
+
+@Email
+
+@Positive
+
+@Min
+
+@Max
+
+Understand Bean Validation completely.
+
+================================================================================
+
+PHASE 6
+Shopping Cart
+
+Improve existing cart.
+
+Features
+
+Add Product
+
+Remove Product
+
+Update Quantity
+
+Inventory Validation
+
+Calculate Total
+
+Clear Cart
+
+Duplicate Product Handling
+
+================================================================================
+
+PHASE 7
+Users
+
+Build
+
+User Entity
+
+Registration
+
+Login
+
+Password Encryption
+
+Roles
+
+Admin
+
+Customer
+
+================================================================================
+
+PHASE 8
+Spring Security
+
+Understand
+
+Authentication
+
+Authorization
+
+Security Filter Chain
+
+JWT
+
+BCrypt
+
+Roles
+
+Permissions
+
+Protected APIs
+
+Public APIs
+
+Custom UserDetailsService
+
+AuthenticationManager
+
+PasswordEncoder
+
+Annotations
+
+@EnableWebSecurity
+
+@PreAuthorize
+
+@Bean
+
+================================================================================
+
+PHASE 9
+Orders
+
+Implement
+
+Checkout
+
+Order
+
+Order Items
+
+Order Status
+
+Payment Status
+
+Inventory Reduction
+
+Order History
+
+Admin Order Management
+
+================================================================================
+
+PHASE 10
+API Documentation
+
+Learn
+
+Swagger
+
+OpenAPI
+
+Document every endpoint professionally.
+
+================================================================================
+
+PHASE 11
+Logging
+
+Learn
+
+SLF4J
+
+Logback
+
+Log Levels
+
+Exception Logging
+
+Request Logging
+
+================================================================================
+
+PHASE 12
+Testing
+
+Learn
+
+JUnit
+
+Mockito
+
+MockMvc
+
+Unit Testing
+
+Integration Testing
+
+Repository Testing
+
+Controller Testing
+
+Service Testing
+
+================================================================================
+
+PHASE 13
+Performance
+
+Learn
+
+Caching
+
+Connection Pool
+
+Indexes
+
+Query Optimization
+
+N+1 Problem
+
+Performance Profiling
+
+================================================================================
+
+PHASE 14
+Production Configuration
+
+Learn
+
+application.properties
+
+Profiles
+
+application-dev.properties
+
+application-prod.properties
+
+Environment Variables
+
+================================================================================
+
+PHASE 15
+Docker
+
+Containerize
+
+Spring Boot
+
+MySQL
+
+Dockerfile
+
+Docker Compose
+
+================================================================================
+
+PHASE 16
+Deployment
+
+Deploy Backend
+
+Deploy Database
+
+Production Environment Variables
+
+Health Checks
+
+================================================================================
+
+PHASE 17
+React Essentials
+
+Only learn enough React to build the frontend.
+
+Learn
+
+Project Structure
+
+Components
+
+JSX
+
+Props
+
+State
+
+Hooks
+
+Axios
+
+Forms
+
+Routing
+
+Environment Variables
+
+API Calls
+
+================================================================================
+
+PHASE 18
+Frontend Development
+
+Build
+
+Landing Page
+
+Product List
+
+Product Details
+
+Search
+
+Filters
+
+Shopping Cart
+
+Login
+
+Register
+
+Orders
+
+Admin Dashboard
+
+Loading States
+
+Error Pages
+
+Toast Notifications
+
+Responsive UI
+
+================================================================================
+
+PHASE 19
+Backend + Frontend Integration
+
+Connect
+
+React
+
+↓
+
+Axios
+
+↓
+
+Spring Boot
+
+↓
+
+MySQL
+
+Learn
+
+CORS
+
+JWT Authentication
+
+Protected Routes
+
+Error Handling
+
+Loading States
+
+================================================================================
+
+PHASE 20
+Resume Polish
+
+Professional README
+
+Architecture Diagram
+
+ER Diagram
+
+API Documentation
+
+Sequence Diagram
+
+Project Screenshots
+
+Deployment Guide
+
+GitHub Best Practices
+
+Interview Questions
+
+Project Walkthrough
+
+================================================================================
+
+RULE AFTER EVERY CHAPTER
+
+1. Understand the theory.
+2. Implement it yourself.
+3. Test every endpoint using Postman.
+4. Commit the changes to Git.
+5. Explain the feature back to yourself.
+6. Move to the next chapter only after understanding the current one.
+
+================================================================================
+
+END GOAL
+
+By the end of this roadmap I should be capable of independently building a
+production-quality Spring Boot backend with authentication, security,
+database relationships, testing, documentation, Docker deployment, and a React
+frontend connected through REST APIs.
+
+The objective is not merely to finish the project, but to become a backend
+developer who understands every technology used and can confidently explain it
+during technical interviews.
+================================================================================

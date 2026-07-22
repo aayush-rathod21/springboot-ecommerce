@@ -6,9 +6,12 @@ import com.aayush.ecommerse02.repo.Cartrepo;
 import com.aayush.ecommerse02.repo.Productrepo;
 import com.aayush.ecommerse02.repo.Cartrepo;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,16 +25,16 @@ public class Productservice {
     @Autowired
     private Cartrepo cartrepo;
 
-    public List<Product> getallproducts() {
-        return repo.findAll();
+    public Page<Product> getallproducts(Pageable pageable) {
+        return repo.findAll(pageable);
     }
 
     public Optional<Product> getbyID(int id){
         return repo.findById(id);
     }
 
-    public List<Product> findByCategory(String category) {
-        return repo.findByCategory(category);
+    public Page<Product> findByCategory(String category, Pageable pageable) {
+        return repo.findByCategory(category, pageable);
     }
 
     public boolean addToCart(int id) {
@@ -82,4 +85,8 @@ public class Productservice {
         cartrepo.deleteAll();
     }
 
+    public Page<Product> searchProducts(String name, String category, String brand, BigDecimal minprice, BigDecimal maxprice, Pageable pageable) {
+        return repo.searchProducts(name, category, brand, minprice, maxprice, pageable);
+    }
 }
+

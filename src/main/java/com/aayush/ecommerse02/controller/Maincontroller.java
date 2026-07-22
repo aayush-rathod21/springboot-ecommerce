@@ -6,8 +6,12 @@ import com.aayush.ecommerse02.service.Productservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,18 +22,24 @@ public class Maincontroller {
     private Productservice service;
 
     @GetMapping("/products")
-    public List<Product> getallproducts(){
-        return service.getallproducts();
+    public Page<Product> getallproducts(Pageable pageable){
+        return service.getallproducts(pageable);
+    }
+    
+    @GetMapping("/products/search/")
+    public Page<Product> searchProducts(@RequestParam(required = false) String name, 
+                                        @RequestParam(required = false) String category,
+                                        @RequestParam(required = false) String brand,
+                                        @RequestParam(required = false) BigDecimal minprice,
+                                        @RequestParam(required = false) BigDecimal maxprice,
+                                     Pageable pageable
+                                ){
+        return service.searchProducts(name,category,brand,minprice,maxprice, pageable);
     }
 
     @GetMapping("/products/{id}")
     public Optional<Product> getbyID(@PathVariable int id){
         return service.getbyID(id);
-    }
-
-    @GetMapping("/products/filter/{category}")
-    public List<Product> findByCategory(@PathVariable String category){
-        return service.findByCategory(category);
     }
 
     @GetMapping("/products/addtocart/{id}")
@@ -52,5 +62,7 @@ public class Maincontroller {
         service.clearCart();
         return "Cart cleared successfully.";
     }
-    
+
 }
+    
+

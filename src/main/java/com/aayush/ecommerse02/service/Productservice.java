@@ -9,7 +9,9 @@ import com.aayush.ecommerse02.repo.Cartrepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -25,6 +27,15 @@ public class Productservice {
     @Autowired
     private Cartrepo cartrepo;
 
+    // Helper method to get the current logged in user
+    private String getCurrentUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    public Product addProduct(Product product) {
+        return repo.save(product);
+    }
+
     public Page<Product> getallproducts(Pageable pageable) {
         return repo.findAll(pageable);
     }
@@ -34,7 +45,7 @@ public class Productservice {
     }
 
     public Page<Product> findByCategory(String category, Pageable pageable) {
-        return repo.findByCategory(category, pageable);
+        return repo.findByCategory_Name(category, pageable);
     }
 
     public boolean addToCart(int id) {
@@ -46,16 +57,16 @@ public class Productservice {
 
         Cart cart = new Cart();
 
+        cart.setUsername(getCurrentUsername()); // Tie this cart item to the logged in user
         cart.setMain_id(p.getId());
         cart.setName(p.getName());
         cart.setDescription(p.getDescription());
         cart.setBrand(p.getBrand());
         cart.setPrice(p.getPrice());
-        cart.setCategory(p.getCategory());
+        cart.setCategory(p.getCategory() != null ? p.getCategory().getName() : null);
         cart.setReleaseDate(p.getReleaseDate());
         cart.setAvailable(p.isAvailable());
         cart.setQuantity(1);
-
 
         cartrepo.save(cart);
             return true;
@@ -64,6 +75,7 @@ public class Productservice {
     }
 
     public boolean removeFromCart(int id){
+        // Make sure the item actually exists before deleting
         if(cartrepo.existsById(id)){
             cartrepo.deleteById(id);
             return true;
@@ -72,8 +84,8 @@ public class Productservice {
     }
 
     public List<Cart> getCartItems() {
-
-        List<Cart> cartItems = cartrepo.findAll();
+        // Only return the cart items for the currently logged in user!
+        List<Cart> cartItems = cartrepo.findByUsername(getCurrentUsername());
 
         if(cartItems.isEmpty()){
             return null;
@@ -81,8 +93,10 @@ public class Productservice {
         else return cartItems;
     }
 
+    @Transactional
     public void clearCart() {
-        cartrepo.deleteAll();
+        // Only delete the cart items for the currently logged in user!
+        cartrepo.deleteByUsername(getCurrentUsername());
     }
 
     public Page<Product> searchProducts(String name, String category, String brand, BigDecimal minprice, BigDecimal maxprice, Pageable pageable) {

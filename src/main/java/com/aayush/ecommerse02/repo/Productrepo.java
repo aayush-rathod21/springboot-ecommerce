@@ -15,13 +15,13 @@ import com.aayush.ecommerse02.model.Product;
 @Repository
 public interface Productrepo extends JpaRepository<Product, Integer> {
 
-    Page<Product> findByCategory(String category, Pageable pageable);
+    Page<Product> findByCategory_Name(String category, Pageable pageable);
 
 
 
     @Query("SELECT p FROM Product p WHERE " +
            "(:name IS NULL OR LOWER(p.name) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
-           "(:category IS NULL OR LOWER(p.category) = LOWER(:category)) AND " +
+           "(:category IS NULL OR LOWER(p.category.name) = LOWER(:category)) AND " +
            "(:brand IS NULL OR LOWER(p.brand) = LOWER(:brand)) AND " +
            "(:minprice IS NULL OR p.price >= :minprice) AND " +
            "(:maxprice IS NULL OR p.price <= :maxprice)")

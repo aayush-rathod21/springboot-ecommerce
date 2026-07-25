@@ -4,15 +4,19 @@ import com.aayush.ecommerse02.model.Cart;
 import com.aayush.ecommerse02.model.Product;
 import com.aayush.ecommerse02.service.Productservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -20,6 +24,26 @@ public class Maincontroller {
 
     @Autowired
     private Productservice service;
+
+    @PostMapping("/products")
+    public ResponseEntity<?> createProduct(@Valid @RequestBody Product product, BindingResult result) {
+        // Beginner-friendly validation handling
+        if (result.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : result.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        }
+
+        try {
+            Product savedProduct = service.addProduct(product);
+            return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
+        } catch (Exception e) {
+            // Beginner-friendly generic exception handling
+            return new ResponseEntity<>("Failed to create product: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/products")
     public Page<Product> getallproducts(Pageable pageable){

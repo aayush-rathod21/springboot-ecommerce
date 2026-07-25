@@ -8,29 +8,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
-
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    // Beginner friendly way to link this cart to a specific user
-    private String username;
-
-    private int main_id;
+    
     private String name;
-    private String description;
-    private String brand;
-    private BigDecimal price;
-    private String category;
-    private LocalDate releaseDate;
-    private boolean available;
-    private int quantity;
 }

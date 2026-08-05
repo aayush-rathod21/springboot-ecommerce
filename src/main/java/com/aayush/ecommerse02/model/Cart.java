@@ -1,5 +1,8 @@
 package com.aayush.ecommerse02.model;
 
+import java.math.BigDecimal;
+
+import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,29 +11,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class Cart {
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Id
+    int id;
 
-    // Beginner friendly way to link this cart to a specific user
-    private String username;
+    int productid;
+    String name;
+    BigDecimal price;
+    int quantity;
 
-    private int main_id;
-    private String name;
-    private String description;
-    private String brand;
-    private BigDecimal price;
-    private String category;
-    private LocalDate releaseDate;
-    private boolean available;
-    private int quantity;
 }

@@ -9,8 +9,6 @@ public class ProductMapper {
         ProductResponseDTO dto = new ProductResponseDTO();
 
         dto.setId(product.getId());
-        dto.setBrand(product.getBrand());
-        dto.setCategory(product.getCategory());
         dto.setName(product.getName());
         dto.setDescription(product.getDescription());
         
